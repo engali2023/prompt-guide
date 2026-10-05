@@ -6,22 +6,15 @@
     <title>دليل البرومبت الاحترافي - توليد الصور في ChatGPT</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/alialaa76/amiri-web@master/amiri/amiri.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- ====== الخيارات العلوية ====== -->
+    <!-- ====== شريط التحكم ====== -->
     <div class="top-bar">
         <div class="container top-bar-inner">
             <div class="brand">🎨 <span>دليل البرومبت الاحترافي</span></div>
             <div class="controls">
-                <!-- الثيم -->
-                <button id="themeToggle" class="control-btn" title="تبديل المظهر">
-                    <span class="icon">🌙</span>
-                </button>
-                <!-- حجم الخط -->
-                <button id="fontSizeToggle" class="control-btn" title="تكبير الخط">
-                    <span class="icon">🔤</span>
-                </button>
+                <button id="themeToggle" class="control-btn" title="تبديل المظهر">🌙</button>
+                <button id="fontSizeToggle" class="control-btn" title="تكبير الخط">🔤</button>
             </div>
         </div>
     </div>
@@ -29,8 +22,8 @@
     <!-- ====== الهيرو ====== -->
     <section class="hero">
         <div class="container">
-            <h1 class="hero-title">🎯 دليل <span class="highlight">البرومبت الاحترافي</span></h1>
-            <p class="hero-subtitle">تعلم كتابة البرومبت المناسب لتوليد صور مذهلة عبر ChatGPT</p>
+            <h1 class="hero-title">🎯 تعلم كتابة <span class="highlight">البرومبت الاحترافي</span></h1>
+            <p class="hero-subtitle">دليل شامل ومفصل لتوليد صور مذهلة عبر ChatGPT من الصفر</p>
             <a href="#examples" class="cta-btn">ابدأ التعلم 🚀</a>
         </div>
     </section>
@@ -41,7 +34,29 @@
         <section class="section">
             <h2 class="section-title">📖 ما هو البرومبت؟</h2>
             <div class="card">
-                <p><strong>البرومبت (Prompt)</strong> هو النص أو الوصف الذي تكتبه للذكاء الاصطناعي لتوليد صورة معينة. كلما كان وصفك أدق وأوضح، كانت النتيجة أفضل وأكثر احترافية.</p>
+                <p><strong>البرومبت (Prompt)</strong> هو النص أو الوصف الذي تكتبه للذكاء الاصطناعي لتوجيهه نحو توليد صورة معينة. ببساطة، هو " الأمر" الذي تعطيه للذكاء الاصطناعي.</p>
+                <br>
+                <p>كلما كان البرومبت أكثر وضوحاً وتفصيلاً، كانت الصورة المنتجة أقرب إلى ما تخيلته في خيالك.</p>
+            </div>
+        </section>
+
+        <!-- ====== لماذا البرومبت مهم؟ ====== -->
+        <section class="section">
+            <h2 class="section-title">🌟 لماذا البرومبت مهم؟</h2>
+            <div class="card">
+                <p>البرومبت الجيد هو الفرق بين:</p>
+                <div class="comparison">
+                    <div class="comparison-box">
+                        <h3>❌ برومبت ضعيف</h3>
+                        <p>"صورة حلوة"</p>
+                        <p style="color:#e74c3c; font-weight:700;">→ نتيجة عشوائية</p>
+                    </div>
+                    <div class="comparison-box">
+                        <h3>✅ برومبت احترافي</h3>
+                        <p>"صورة واقعية لغابة غامرة في الصباح، ضوء الشمس يتخلل الأشجار، ضباب خفيف، تفاصيل حادة، عالية الدقة"</p>
+                        <p style="color:#00b894; font-weight:700;">→ نتيجة مذهلة!</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -49,62 +64,145 @@
         <section class="section">
             <h2 class="section-title">🏗️ هيكل البرومبت الاحترافي</h2>
             <div class="card">
-                <p>البرومبت الاحترافي يتكون من 4 عناصر أساسية:</p>
+                <p>البرومبت الاحترافي يتكون من 5 عناصر أساسية:</p>
                 <div class="structure-grid">
                     <div class="structure-item">
                         <div class="structure-icon">🎨</div>
                         <h3>1. الموضوع</h3>
-                        <p>ما الذي تريده في الصورة؟ (مثلاً: غابة، مدينة مستقبلية، شخص)</p>
+                        <p>ما الذي تريده في الصورة؟ (مثلاً: غابة، مدينة مستقبلية، شخص، حيوان)</p>
                     </div>
                     <div class="structure-item">
                         <div class="structure-icon">🖼️</div>
                         <h3>2. الأسلوب الفني</h3>
-                        <p>كيف تريد أن تظهر الصورة؟ (واقعي، كرتوني، زيتي، رقمي)</p>
+                        <p>كيف تريد أن تظهر الصورة؟ (واقعي، كرتوني، زيتي، رقمي، رسميد)</p>
                     </div>
                     <div class="structure-item">
                         <div class="structure-icon">💡</div>
                         <h3>3. الإضاءة</h3>
-                        <p>ما نوع الإضاءة؟ (طبيعية، درامية، ناعمة، نيون)</p>
+                        <p>ما نوع الإضاءة؟ (طبيعية، درامية، ناعمة، نيون، ذهبية)</p>
                     </div>
                     <div class="structure-item">
                         <div class="structure-icon">🎨</div>
                         <h3>4. الألوان</h3>
-                        <p>ما الألوان المفضلة؟ (دافئة، باردة، أحادية اللون)</p>
+                        <p>ما الألوان المفضلة؟ (دافئة، باردة، أحادية اللون، زاهية)</p>
+                    </div>
+                    <div class="structure-item">
+                        <div class="structure-icon">📐</div>
+                        <h3>5. الأبعاد</h3>
+                        <p>ما نسبة الأبعاد؟ (16:9، مربع 1:1، طولي 9:16)</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ====== العبارات المفتاحية ====== -->
+        <section class="section">
+            <h2 class="section-title">🔑 العبارات المفتاحية المهمة</h2>
+            <div class="card">
+                <h3>✨ لكل أسلوب عباراته السحرية:</h3>
+                <ul class="tips-list">
+                    <li><strong>واقعي:</strong> "photorealistic", "hyper-detailed", "8K", "professional photography"</li>
+                    <li><strong>كرتوني:</strong> "Disney Pixar style", "cartoon", "cel-shaded", "anime"</li>
+                    <li><strong>زيتي:</strong> "oil painting", "Rembrandt style", "visible brushstrokes", "impasto"</li>
+                    <li><strong>رقمي:</strong> "digital art", "concept art", "trending on ArtStation", "highly detailed"</li>
+                    <li><strong>خيال علمي:</strong> "futuristic", "sci-fi", "cyberpunk", "alien"</li>
+                    <li><strong>عمارة:</strong> "architectural photography", "minimalist", "modern", "natural light"</li>
+                </ul>
+            </div>
+        </section>
+
         <!-- ====== أمثلة ====== -->
         <section class="section" id="examples">
-            <h2 class="section-title">📝 أمثلة على برومبتات احترافية</h2>
+            <h2 class="section-title">📝 20+ مثال على برومبتات احترافية</h2>
             <div class="examples-grid" id="examplesList"></div>
         </section>
 
         <!-- ====== نصائح ====== -->
         <section class="section">
-            <h2 class="section-title">💡 نصائح للحصول على أفضل النتائج</h2>
+            <h2 class="section-title">💡 10 نصائح للحصول على أفضل النتائج</h2>
             <div class="card">
                 <ul class="tips-list">
-                    <li>✅ استخدم كلمات وصفية دقيقة مثل: "واقعي"، "تفاصيل دقيقة"، "إضاءة ناعمة"</li>
-                    <li>✅ حدد نسبة الأبعاد مثل: "16:9"، "مربع"، "طولي"</li>
-                    <li>✅ جرب تعديل الكلمات مثل: "بأسلوب"، "مستوحاة من"، "في ضوء"</li>
-                    <li>✅ استخدم اللغة الإنجليزية غالباً للحصول على نتائج أفضل</li>
-                    <li>✅ أضف كلمات مثل: "8K"، "عالية الدقة"، "تفاصيل حادة"</li>
+                    <li>✅ <strong>1.</strong> استخدم كلمات وصفية دقيقة مثل: "واقعي"، "تفاصيل دقيقة"، "إضاءة ناعمة"</li>
+                    <li>✅ <strong>2.</strong> حدد نسبة الأبعاد مثل: "16:9"، "مربع"، "طولي"</li>
+                    <li>✅ <strong>3.</strong> جرب تعديل الكلمات مثل: "بأسلوب"، "مستوحاة من"، "في ضوء"</li>
+                    <li>✅ <strong>4.</strong> استخدم اللغة الإنجليزية غالباً للحصول على نتائج أفضل</li>
+                    <li>✅ <strong>5.</strong> أضف كلمات مثل: "8K"، "عالية الدقة"، "تفاصيل حادة"</li>
+                    <li>✅ <strong>6.</strong> حدد العمر مثل: "young", "old", "ancient"</li>
+                    <li>✅ <strong>7.</strong> استخدم مصطلحات الكاميرا: "deep focus", "bokeh", "wide angle"</li>
+                    <li>✅ <strong>8.</strong> حدد نوع المشهد: "indoor", "outdoor", "studio"</li>
+                    <li>✅ <strong>9.</strong> اذكر الفصل: "spring", "summer", "autumn", "winter"</li>
+                    <li>✅ <strong>10.</strong> أضف كلمة "masterpiece" أو "trending" لجودة أعلى</li>
                 </ul>
             </div>
         </section>
 
         <!-- ====== أشياء يجب تجنبها ====== -->
         <section class="section">
-            <h2 class="section-title">❌ أخطاء شائعة يجب تجنبها</h2>
+            <h2 class="section-title">❌ 10 أخطاء شائعة يجب تجنبها</h2>
             <div class="card">
                 <ul class="tips-list">
-                    <li>❌ استخدام كلمات عامة مثل: "صورة جميلة"، "منظر جميل"</li>
-                    <li>❌ وصف غير واضح مثل: "شيء لطيف"، "منظر طبيعي"</li>
-                    <li>❌ إهمال تحديد الأسلوب الفني</li>
-                    <li>❌ عدم تحديد الإضاءة والألوان</li>
+                    <li>❌ <strong>1.</strong> استخدام كلمات عامة مثل: "صورة جميلة"، "منظر جميل"</li>
+                    <li>❌ <strong>2.</strong> وصف غير واضح مثل: "شيء لطيف"، "منظر طبيعي"</li>
+                    <li>❌ <strong>3.</strong> إهمال تحديد الأسلوب الفني</li>
+                    <li>❌ <strong>4.</strong> عدم تحديد الإضاءة والألوان</li>
+                    <li>❌ <strong>5.</strong> كتابة برومبت طويل جداً (أكثر من 100 كلمة)</li>
+                    <li>❌ <strong>6.</strong> استخدام كلمات متضاربة مثل "واقعي" و"كرتوني" معاً</li>
+                    <li>❌ <strong>7.</strong> إهمال تحديد الأبعاد</li>
+                    <li>❌ <strong>8.</strong> كتابة النص بالعربية فقط (استخدم الإنجليزية غالباً)</li>
+                    <li>❌ <strong>9.</strong> عدم ذكر الأسلوب الفني المقصود</li>
+                    <li>❌ <strong>10.</strong> الاستعجال وعدم التدقيق في الوصف</li>
                 </ul>
+            </div>
+        </section>
+
+        <!-- ====== خطوات الكتابة ====== -->
+        <section class="section">
+            <h2 class="section-title">📋 خطوات كتابة برومبت احترافي</h2>
+            <div class="card">
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>حدد الموضوع</h3>
+                            <p>ما الذي تريده في الصورة؟ (شخص، منظر، حيوان، شيء)</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>حدد الأسلوب</h3>
+                            <p>واقعي، كرتوني، زيتي، رقمي؟</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>حدد الإضاءة</h3>
+                            <p>طبيعية، درامية، ناعمة؟</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>حدد الألوان</h3>
+                            <p>دافئة، باردة، زاهية؟</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>حدد الأبعاد</h3>
+                            <p>16:9، 1:1، 9:16؟</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h3>أضف التفاصيل</h3>
+                            <p>تفاصيل حادة، 8K، masterpiece؟</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -118,7 +216,7 @@
         </div>
     </footer>
 
-    <!-- Toast notification -->
+    <!-- Toast -->
     <div id="toast" class="toast"></div>
 
     <script src="app.js"></script>
