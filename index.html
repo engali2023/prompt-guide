@@ -3,137 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إتقان البرومبت الاحترافي | توليد الصور في ChatGPT</title>
+    <title>إتقان البرومبت | توليد الصور في ChatGPT</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- ====== شريط التنقل ====== -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo">🎨 <span class="logo-text">إتقان البرومبت</span></a>
-            <div class="nav-actions">
-                <button id="themeToggle" class="btn-icon" title="تبديل المظهر">🌙</button>
-                <button id="fontSizeToggle" class="btn-icon" title="تكبير الخط">🔤</button>
+    <!-- ====== التنقل ====== -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo">إتقان <span class="logo-accent">البرومبت</span></a>
+            <nav class="nav">
+                <a href="#about" class="nav-link">عن الدليل</a>
+                <a href="#examples" class="nav-link">أمثلة</a>
+                <a href="#tips" class="nav-link">نصائح</a>
+                <a href="#quiz" class="nav-link">الاختبار</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="action-btn" title="المظهر">🌙</button>
+                <button id="fontSizeToggle" class="action-btn" title="الحجم">A+</button>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- ====== القسم الرئيسي ====== -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="badge">✨ دليل متخصص ومكثف</div>
-            <h1 class="hero-title">إتقان لغة <span class="gradient">البرومبت</span></h1>
-            <p class="hero-desc">تعلم كيف تحوّل أفكارك إلى صور واقعية مذهلة باستخدام ChatGPT</p>
-            <a href="#content" class="cta-button">استكشف الدليل</a>
+    <!-- ====== Hero ====== -->
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="hero-kicker">✨ دليل متخصص ومكثّف</p>
+            <h1 class="hero-title">أتقن فن <br><span class="hero-highlight">كتابة البرومبت</span></h1>
+            <p class="hero-sub">حوّل أفكارك إلى صور واقعية باحترافية</p>
+            <a href="#about" class="btn">ابدأ التعلم</a>
         </div>
     </section>
 
     <!-- ====== المحتوى ====== -->
-    <main class="main-content" id="content">
+    <main class="main">
         
-        <!-- مقدمة -->
-        <section class="section">
-            <h2 class="section-heading">ما هو البرومبت؟</h2>
-            <div class="info-card">
-                <p>البرومبت هو <strong> "دقيقة التفاصيل" </strong> الذي تكتبه للذكاء الاصطناعي لتوجيهه نحو النتيجة المطلوبة. إنه ليس مجرد أمر بسيط، بل هو فن التواصل مع الآلة.</p>
-                <div class="quote-box">
-                    "كلما كانت تفاصيل البرومبت أدق، كانت الصورة أكثر واقعية واحترافية."
-                </div>
+        <!-- عن الدليل -->
+        <section id="about" class="section">
+            <h2 class="section-title">ما هو البرومبت؟</h2>
+            <div class="card">
+                <p>البرومبت هو <strong>اللغة التي تتحدث بها الآلة</strong>. هو الوصف الذي تكتبه للذكاء الاصطناعي لتوجيهه نحو الصورة التي تخيلها.</p>
+                <div class="divider"></div>
+                <p>البرومبت الجيد هو الفرق بين صورة عادية وأخرى مذهلة.</p>
             </div>
         </section>
 
         <!-- الهيكل -->
         <section class="section">
-            <h2 class="section-heading">هيكل البرومبت الاحترافي</h2>
-            <div class="info-card">
-                <p>البرومبت المثالي يتكون من 5 ركائز أساسية:</p>
-                <div class="pillars">
-                    <div class="pillar-item">
-                        <span class="pillar-icon">🎯</span>
-                        <h3>الهدف الرئيسي</h3>
-                        <p>ما الذي تريده في الصورة؟</p>
+            <h2 class="section-title">هيكل البرومبت الاحترافي</h2>
+            <div class="card">
+                <div class="structure">
+                    <div class="s-item">
+                        <span class="s-num">1</span>
+                        <h3>الهدف</h3>
+                        <p>ما في الصورة؟</p>
                     </div>
-                    <div class="pillar-item">
-                        <span class="pillar-icon">🎨</span>
+                    <div class="s-item">
+                        <span class="s-num">2</span>
                         <h3>الأسلوب</h3>
-                        <p>نوع الفن (واقعي، زيتي، 3D)</p>
+                        <p>واقعي؟ كرتوني؟</p>
                     </div>
-                    <div class="pillar-item">
-                        <span class="pillar-icon">💡</span>
+                    <div class="s-item">
+                        <span class="s-num">3</span>
                         <h3>الإضاءة</h3>
-                        <p>نوع الضوء (طبيعي، درامي، نيون)</p>
+                        <p>طبيعية؟ درامية؟</p>
                     </div>
-                    <div class="pillar-item">
-                        <span class="pillar-icon">✨</span>
+                    <div class="s-item">
+                        <span class="s-num">4</span>
                         <h3>الجودة</h3>
-                        <p>التفاصيل (8K، HD، واقعي)</p>
+                        <p>8K، دقة عالية</p>
                     </div>
-                    <div class="pillar-item">
-                        <span class="pillar-icon">📐</span>
+                    <div class="s-item">
+                        <span class="s-num">5</span>
                         <h3>الشكل</h3>
-                        <p>الأبعاد (مربع، عريض، طولي)</p>
+                        <p>مربع؟ عريض؟</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- أمثلة -->
-        <section class="section" id="examples">
-            <h2 class="section-heading">مكتبة الأمثلة المتقدمة</h2>
-            <div class="examples-grid" id="examplesContainer"></div>
+        <!-- الأمثلة -->
+        <section id="examples" class="section">
+            <h2 class="section-title">أمثلة متنوعة</h2>
+            <div class="examples" id="examplesList"></div>
         </section>
 
-        <!-- نصائح -->
-        <section class="section">
-            <h2 class="section-heading">نصائح احترافية</h2>
-            <div class="info-card">
-                <ul class="tips-list">
-                    <li><strong>1. استخدم اللغة الإنجليزية:</strong> ChatGPT يفهم البرومبت الإنجليزي بشكل أفضل.</li>
-                    <li><strong>2. كن محدداً:</strong> بدلاً من "صورة جميلة"، اكتب "صورة واقعية لمنظر طبيعي وقت الغروب".</li>
-                    <li><strong>3. حدد الأسلوب:</strong> أضف "بأسلوب" أو "على غرار" لتوجيه النمط الفني.</li>
-                    <li><strong>4. أضف تفاصيل الإضاءة:</strong> مثل "إضاءة ذهبية" أو "ضوء ناعم".</li>
-                    <li><strong>5. حدد الأبعاد:</strong> استخدم "16:9" أو "1:1" لتحديد نسبة الصورة.</li>
+        <!-- النصائح -->
+        <section id="tips" class="section">
+            <h2 class="section-title">نصائح ذهبية</h2>
+            <div class="card">
+                <ul class="tips">
+                    <li>✅ استخدم اللغة الإنجليزية غالباً</li>
+                    <li>✅ كن محدداً في الوصف</li>
+                    <li>✅ أضف تفاصيل الإضاءة</li>
+                    <li>✅ حدد الأبعاد (16:9 أو 1:1)</li>
+                    <li>✅ استخدم كلمات مثل "8K" و"masterpiece"</li>
                 </ul>
             </div>
         </section>
 
-        <!-- أخطاء -->
-        <section class="section">
-            <h2 class="section-heading">أخطاء يجب تجنبها</h2>
-            <div class="info-card">
-                <ul class="mistakes-list">
-                    <li>❌ <strong>الغموض:</strong> استخدام كلمات مثل "جميل" أو "جيد".</li>
-                    <li>❌ <strong>الإطالة:</strong> كتابة أكثر من 100 كلمة.</li>
-                    <li>❌ <strong>التناقض:</strong> الجمع بين "واقعي" و"كرتوني" في نفس البرومبت.</li>
-                    <li>❌ <strong>عدم التحديث:</strong> نسيان تحديث الوصف بناءً على النتائج.</li>
-                </ul>
+        <!-- الاختبار -->
+        <section id="quiz" class="section quiz-section">
+            <h2 class="section-title">اختبر معلوماتك</h2>
+            <div class="card quiz-card">
+                <div id="quizIntro">
+                    <p>أجب عن 5 أسئلة لتقييم مهارتك.</p>
+                    <button id="startQuiz" class="btn">ابدأ</button>
+                </div>
+                <div id="quizContent" class="hidden"></div>
+                <div id="quizScore" class="hidden"></div>
             </div>
-        </section>
-
-        <!-- اختبار -->
-        <section class="section quiz-section">
-            <h2 class="section-heading">اختبار المعرفة</h2>
-            <div class="quiz-card" id="quizCard">
-                <h3 id="quizTitle">هل أنت مستعد؟</h3>
-                <p id="quizDesc">اختبر معرفتك بأساسيات كتابة البرومبت الاحترافي.</p>
-                <button id="startQuiz" class="btn-primary">ابدأ الاختبار</button>
-            </div>
-            <div id="quizQuestions" class="hidden"></div>
-            <div id="quizScore" class="hidden"></div>
         </section>
 
     </main>
 
     <!-- ====== الفوتر ====== -->
     <footer class="footer">
-        <p class="footer-brand">تصميم المهندس علي موجد</p>
-        <p class="footer-copy">© 2026 - جميع الحقوق محفوظة</p>
+        <p>تصميم المهندس علي موجد</p>
+        <p class="footer-sub">© 2026</p>
     </footer>
 
-    <!-- Toast -->
     <div id="toast" class="toast"></div>
-
     <script src="app.js"></script>
 </body>
 </html>
