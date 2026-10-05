@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // ====== شاشة الدخول ======
+    const loginScreen = document.getElementById('loginScreen');
+    const siteContent = document.getElementById('siteContent');
+    const enterBtn = document.getElementById('enterSiteBtn');
+
+    enterBtn.addEventListener('click', function() {
+        loginScreen.classList.add('hidden');
+        siteContent.classList.remove('hidden');
+        setTimeout(() => {
+            loginScreen.style.display = 'none';
+        }, 500);
+    });
+
     // ====== الثيم ======
     const themeBtn = document.getElementById('themeToggle');
     const html = document.documentElement;
@@ -13,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ====== حجم الخط ======
     const fontBtn = document.getElementById('fontSizeToggle');
-    if (localStorage.getItem('largeFont') === 'true') { html.classList.add('large-font'); fontBtn.textContent = 'A+'; }
+    if (localStorage.getItem('largeFont') === 'true') { html.classList.add('large-font'); fontBtn.textContent = 'A-'; }
     fontBtn.addEventListener('click', () => {
         html.classList.toggle('large-font');
         const big = html.classList.contains('large-font');
@@ -60,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
         navigator.clipboard.writeText(text).then(() => {
             const btn = document.querySelector(`#prompt-${i} + .copy-btn`);
             const orig = btn.textContent;
-            btn.textContent = 'تم النسخ!';
+            btn.textContent = 'تم!';
             btn.style.background = '#28a745'; btn.style.color = 'white';
             showToast('تم نسخ البرومبت بنجاح!');
             setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; }, 2000);
@@ -82,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentQ = 0, score = 0;
     const startBtn = document.getElementById('startQuiz');
-    const quizCard = document.querySelector('.quiz-card');
+    const quizIntro = document.getElementById('quizIntro');
     const questionsDiv = document.getElementById('quizContent');
     const scoreDiv = document.getElementById('quizScore');
 
@@ -90,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function startQuiz() {
         currentQ = 0; score = 0;
-        document.getElementById('quizIntro').classList.add('hidden');
+        quizIntro.classList.add('hidden');
         questionsDiv.classList.remove('hidden');
         scoreDiv.classList.add('hidden');
         showQuestion();
