@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
     // ====== الثيم ======
-    const themeToggle = document.getElementById('themeToggle');
+    const themeBtn = document.getElementById('themeToggle');
     const html = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) { html.setAttribute('data-theme', savedTheme); themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙'; }
-    themeToggle.addEventListener('click', function() {
-        const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    if (savedTheme) { html.setAttribute('data-theme', savedTheme); themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙'; }
+    themeBtn.addEventListener('click', () => {
+        const t = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', t);
+        localStorage.setItem('theme', t);
+        themeBtn.textContent = t === 'dark' ? '☀️' : '🌙';
     });
 
     // ====== حجم الخط ======
-    const fontSizeToggle = document.getElementById('fontSizeToggle');
-    if (localStorage.getItem('largeFont') === 'true') { html.classList.add('large-font'); fontSizeToggle.textContent = '🔡'; }
-    fontSizeToggle.addEventListener('click', function() {
+    const fontBtn = document.getElementById('fontSizeToggle');
+    if (localStorage.getItem('largeFont') === 'true') { html.classList.add('large-font'); fontBtn.textContent = '🔡'; }
+    fontBtn.addEventListener('click', () => {
         html.classList.toggle('large-font');
-        const isLarge = html.classList.contains('large-font');
-        localStorage.setItem('largeFont', isLarge);
-        fontSizeToggle.textContent = isLarge ? '🔡' : '🔤';
+        const big = html.classList.contains('large-font');
+        localStorage.setItem('largeFont', big);
+        fontBtn.textContent = big ? '🔡' : '🔤';
     });
 
     // ====== الأمثلة ======
@@ -45,9 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
         { cat: "🌳 غابات", title: "غابة مظلمة", text: "Dark mysterious forest with fog, moonlight through trees, mystical atmosphere, eerie green colors, concept art, digital painting" }
     ];
 
-    const examplesContainer = document.getElementById('examplesList');
-    examplesContainer.innerHTML = examples.map((ex, i) => `
-        <div class="example-item">
+    const container = document.getElementById('examplesContainer');
+    container.innerHTML = examples.map((ex, i) => `
+        <div class="example-card">
             <span class="ex-category">${ex.cat}</span>
             <div class="ex-title">${ex.title}</div>
             <div class="ex-text" id="prompt-${i}">${ex.text}</div>
@@ -61,9 +61,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const btn = document.querySelector(`#prompt-${i} + .copy-btn`);
             const orig = btn.textContent;
             btn.textContent = '✅ تم!';
-            btn.style.background = '#28a745'; btn.style.color = 'white';
+            btn.style.background = '#28a745';
             showToast('تم نسخ البرومبت بنجاح!');
-            setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; }, 2000);
+            setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 2000);
         }).catch(() => {
             const ta = document.createElement('textarea'); ta.value = text;
             document.body.appendChild(ta); ta.select(); document.execCommand('copy');
@@ -72,37 +72,35 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // ====== الاختبار ======
-    const quizQuestions = [
-        { q: "ما هو البرومبت؟", options: ["أ. لغة برمجة", "ب. نص وصفي للذكاء الاصطناعي", "ج. برنامج للرسم", "د. نوع من الخطوط"], answer: 1 },
-        { q: "ما العنصر الذي يحدد أسلوب الصورة؟", options: ["أ. الإضاءة", "ب. الأسلوب الفني", "ج. الألوان", "د. الأبعاد"], answer: 1 },
-        { q: "ما الكلمة المهمة لجودة عالية في البرومبت؟", options: ["أ. Ugly", "ب. Professional", "ج. Blurry", "د. Old"], answer: 1 },
-        { q: "أي لغة أفضل لكتابة البرومبت للحصول على نتائج أفضل؟", options: ["أ. العربية", "ب. الإنجليزية", "ج. الفرنسية", "د. الإسبانية"], answer: 1 },
-        { q: "ما الذي يجعل البرومبت أفضل؟", options: ["أ. الاختصار", "ب. الدقة والتفاصيل", "ج. الغموض", "د. الطول الزائد"], answer: 1 }
+    const quizData = [
+        { q: "ما هو البرومبت؟", options: ["أ. لغة برمجة", "ب. نص وصفي لتوليد الصور", "ج. برنامج رسم", "د. نوع من الخطوط"], a: 1 },
+        { q: "ما العنصر الذي يحدد أسلوب الصورة؟", options: ["أ. الإضاءة", "ب. الأسلوب الفني", "ج. الألوان", "د. الأبعاد"], a: 1 },
+        { q: "ما الكلمة المهمة لجودة عالية؟", options: ["أ. Ugly", "ب. Professional", "ج. Blurry", "د. Old"], a: 1 },
+        { q: "ما اللغة الأفضل لكتابة البرومبت؟", options: ["أ. العربية", "ب. الإنجليزية", "ج. الفرنسية", "د. الإسبانية"], a: 1 },
+        { q: "ما الذي يجعل البرومبت أفضل؟", options: ["أ. الاختصار", "ب. الدقة والتفاصيل", "ج. الغموض", "د. الطول الزائد"], a: 1 }
     ];
 
-    let currentQuestion = 0;
-    let score = 0;
-
-    const startBtn = document.getElementById('startQuizBtn');
-    const quizIntro = document.getElementById('quizIntro');
-    const quizContent = document.getElementById('quizContent');
-    const quizResult = document.getElementById('quizResult');
+    let currentQ = 0, score = 0;
+    const startBtn = document.getElementById('startQuiz');
+    const quizCard = document.getElementById('quizCard');
+    const questionsDiv = document.getElementById('quizQuestions');
+    const scoreDiv = document.getElementById('quizScore');
 
     startBtn.addEventListener('click', startQuiz);
 
     function startQuiz() {
-        currentQuestion = 0; score = 0;
-        quizIntro.classList.add('hidden');
-        quizContent.classList.remove('hidden');
-        quizResult.classList.add('hidden');
+        currentQ = 0; score = 0;
+        quizCard.classList.add('hidden');
+        questionsDiv.classList.remove('hidden');
+        scoreDiv.classList.add('hidden');
         showQuestion();
     }
 
     function showQuestion() {
-        const q = quizQuestions[currentQuestion];
-        quizContent.innerHTML = `
+        const q = quizData[currentQ];
+        questionsDiv.innerHTML = `
             <div class="quiz-question">
-                <h3>${currentQuestion + 1}. ${q.q}</h3>
+                <h3>${currentQ + 1}. ${q.q}</h3>
                 <div class="options">
                     ${q.options.map((opt, i) => `<button class="option-btn" onclick="checkAnswer(${i})">${opt}</button>`).join('')}
                 </div>
@@ -111,43 +109,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     window.checkAnswer = function(selected) {
-        const q = quizQuestions[currentQuestion];
-        const buttons = document.querySelectorAll('.option-btn');
-        buttons.forEach(btn => btn.disabled = true);
-        
-        if (selected === q.answer) {
-            buttons[selected].classList.add('correct');
-            score++;
-        } else {
-            buttons[selected].classList.add('wrong');
-            buttons[q.answer].classList.add('correct');
-        }
-
+        const q = quizData[currentQ];
+        const btns = document.querySelectorAll('.option-btn');
+        btns.forEach(b => b.disabled = true);
+        if (selected === q.a) { btns[selected].classList.add('correct'); score++; }
+        else { btns[selected].classList.add('wrong'); btns[q.a].classList.add('correct'); }
         setTimeout(() => {
-            currentQuestion++;
-            if (currentQuestion < quizQuestions.length) {
-                showQuestion();
-            } else {
-                showResult();
-            }
+            currentQ++;
+            if (currentQ < quizData.length) showQuestion();
+            else showScore();
         }, 1500);
     };
 
-    function showResult() {
-        quizContent.classList.add('hidden');
-        quizResult.classList.remove('hidden');
-        const percentage = (score / quizQuestions.length) * 100;
-        let message = "";
-        if (percentage === 100) message = "🎉 ممتاز! أنت خبير حقيقي!";
-        else if (percentage >= 80) message = "👏 أحسنت! لديك معرفة جيدة جداً.";
-        else if (percentage >= 60) message = "👍 جيد! استمر في التعلم.";
-        else message = "📚 أنصحك بقراءة الدليل مرة أخرى.";
-
-        quizResult.innerHTML = `
-            <h3>نتيجتك</h3>
-            <div class="quiz-score">${score} / ${quizQuestions.length}</div>
-            <p>${message}</p>
-            <button onclick="location.reload()" class="btn-primary mt-2" style="margin-top:20px;">إعادة الاختبار</button>
+    function showScore() {
+        questionsDiv.classList.add('hidden');
+        scoreDiv.classList.remove('hidden');
+        const pct = (score / quizData.length) * 100;
+        let msg = pct === 100 ? "🎉 ممتاز! أنت خبير حقيقي!" :
+                  pct >= 80 ? "👏 أحسنت! معرفة قوية." :
+                  pct >= 60 ? "👍 جيد! استمر." : "📚 راجع الدليل مرة أخرى.";
+        scoreDiv.innerHTML = `
+            <h3>النتيجة</h3>
+            <div class="score-display">${score} / ${quizData.length}</div>
+            <p>${msg}</p>
+            <button onclick="location.reload()" class="btn-primary" style="margin-top:20px;">إعادة الاختبار</button>
         `;
     }
 
