@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ali Moojid | دليل كتابة البرومبت لتوليد الصور بالذكاء الاصطناعي</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05060a; --bg2:#0a0e18; --acc:#6d5cff; --acc2:#00e5ff; --gold:#f5c76a;
+  --txt:#e8ecf5; --muted:#9aa4b8; --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.09);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'IBM Plex Sans Arabic',sans-serif;overflow-x:hidden;line-height:1.9}
+#webgl{position:fixed;inset:0;z-index:0}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{position:relative;z-index:2}
+nav{position:fixed;top:0;width:100%;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:rgba(5,6,10,.55);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-family:'Cairo';font-weight:900;font-size:1.4rem;background:linear-gradient(90deg,var(--acc2),var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav a{color:var(--muted);text-decoration:none;margin-inline-start:18px;font-size:.92rem}
+nav a:hover{color:#fff}
+.btn{display:inline-block;padding:13px 30px;border-radius:40px;border:1px solid var(--acc);background:linear-gradient(135deg,rgba(109,92,255,.25),rgba(0,229,255,.12));color:#fff;cursor:pointer;font-family:inherit;font-size:1rem;transition:.3s}
+.btn:hover{box-shadow:0 0 30px rgba(109,92,255,.5);transform:translateY(-2px)}
+#soundBtn{position:fixed;bottom:22px;left:22px;z-index:11;width:52px;height:52px;border-radius:50%;background:var(--card);border:1px solid var(--line);color:#fff;font-size:1.3rem;cursor:pointer}
+section{padding:110px 8vw;max-width:1200px;margin:auto}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;text-align:center;padding-top:80px}
+.hero h1{font-family:'Cairo';font-weight:900;font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.3;background:linear-gradient(180deg,#fff,#8f9ac9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:640px;margin:22px auto 34px;font-size:1.15rem}
+.tag{color:var(--acc2);letter-spacing:2px;font-size:.8rem}
+h2{font-family:'Cairo';font-weight:900;font-size:clamp(1.7rem,4vw,2.6rem);margin-bottom:30px}
+h2 span{color:var(--acc2)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;backdrop-filter:blur(8px);transition:.3s}
+.card:hover{border-color:var(--acc);transform:translateY(-4px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.formula{font-family:monospace;direction:ltr;text-align:left;background:#0b0f1c;border:1px solid var(--line);border-radius:14px;padding:20px;color:var(--acc2);font-size:.95rem;overflow-x:auto}
+.step{display:flex;gap:18px;margin-bottom:20px;align-items:flex-start}
+.num{flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--acc2));display:flex;align-items:center;justify-content:center;font-weight:700}
+.prompt-ex{background:#0b0f1c;border-inline-start:3px solid var(--acc);border-radius:12px;padding:18px;direction:ltr;text-align:left;font-size:.9rem;color:#c3ccdf;position:relative;margin:14px 0}
+.copy{position:absolute;top:10px;left:10px;background:var(--card);border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:4px 12px;cursor:pointer;font-size:.75rem}
+.copy:hover{color:#fff}
+.faq-item{border-bottom:1px solid var(--line);padding:16px 0;cursor:pointer}
+.faq-item h3{font-size:1.05rem}
+.faq-item p{color:var(--muted);max-height:0;overflow:hidden;transition:.4s}
+.faq-item.open p{max-height:300px;padding-top:10px}
+ul.tips li{margin-bottom:10px;padding-inline-start:26px;position:relative}
+ul.tips li::before{content:'✦';position:absolute;inset-inline-start:0;color:var(--acc2)}
+footer{text-align:center;padding:50px;color:var(--muted);border-top:1px solid var(--line)}
+.reveal{opacity:0;transform:translateY(40px);transition:.8s}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:640px){nav a{display:none}}
+</style>
+</head>
+<body>
+<canvas id="webgl"></canvas>
+<div class="grain"></div>
+
+<nav>
+  <div class="logo">Ali Moojid</div>
+  <div>
+    <a href="#basics">الأساسيات</a>
+    <a href="#formula">معادلة البرومبت</a>
+    <a href="#steps">الخطوات</a>
+    <a href="#examples">أمثلة</a>
+    <a href="#faq">الأسئلة</a>
+  </div>
+</nav>
+
+<button id="soundBtn" title="تشغيل/كتم الصوت">🔇</button>
+
+<div class="wrap">
+<section class="hero">
+  <div class="tag">A CINEMATIC JOURNEY INTO PROMPT ENGINEERING</div>
+  <h1>دليلك الشامل لكتابة<br>برومبت توليد الصور<br>في ChatGPT</h1>
+  <p>رحلة تفاعلية مُصمَّمة بأسلوب سينمائي لتتعلّم كيف تحوّل أفكارك إلى صور احترافية عبر الذكاء الاصطناعي — من الأساسيات حتى أساليب المحترفين.</p>
+  <a class="btn" href="#basics">ابدأ الرحلة ↓</a>
+</section>
+
+<section id="basics" class="reveal">
+  <h2>ما هو <span>توليد الصور</span> في ChatGPT؟</h2>
+  <div class="grid">
+    <div class="card"><h3>🖼 النموذج</h3><p>يعتمد ChatGPT على نماذج توليد صور متطورة (مثل GPT Image و DALL·E 3) تحوّل وصفك النصي إلى صورة واقعية أو فنية خلال ثوانٍ.</p></div>
+    <div class="card"><h3>🗣 اللغة الطبيعية</h3><p>لا تحتاج كلمات تقنية معقدة؛ اكتب كأنك تصف المشهد لمصور محترف: ماذا ترى، بأي أسلوب، وبأي إضاءة؟</p></div>
+    <div class="card"><h3>🔁 التكرار والتحسين</h3><p>الميزة الكبرى: محادثة مستمرة. اطلب تعديلات — «اجعل الإضاءة أغمق» — وستبنى النتيجة على الصورة السابقة.</p></div>
+  </div>
+</section>
+
+<section id="formula" class="reveal">
+  <h2>معادلة <span>البرومبت المثالي</span></h2>
+  <div class="formula">[Subject] + [Details] + [Environment] + [Style] + [Lighting] + [Camera/Composition] + [Mood]</div>
+  <div class="grid" style="margin-top:22px">
+    <div class="card"><h3>🎯 الموضوع</h3><p>ماذا تريد أن ترى؟ «قطة شيرازية» أفضل من «قطة».</p></div>
+    <div class="card"><h3>🎨 الأسلوب</h3><p>واقعي، رسم زيتي، أنيمي، سينمائي، ثلاثي الأبعاد...</p></div>
+    <div class="card"><h3>💡 الإضاءة</h3><p>«إضاءة ذهبية عند الغروب» تصنع فرقاً هائلاً.</p></div>
+    <div class="card"><h3>📷 التكوين</h3><p>لقطة قريبة، زاوية علوية، عمق ميدان ضحل.</p></div>
+    <div class="card"><h3>🌫 الجو العام</h3><p>حالم، غامض، مبهج، دراماتيكي.</p></div>
+    <div class="card"><h3>📐 الأبعاد</h3><p>اذكر النسبة: «صورة مربعة 1024×1024» أو «أفقية 16:9».</p></div>
+  </div>
+</section>
+
+<section id="steps" class="reveal">
+  <h2>خطوات <span>كتابة البرومبت</span></h2>
+  <div class="step"><div class="num">1</div><div><h3>ابدأ بفكرة واضحة</h3><p>حدد الهدف: صورة منتج؟ مشهد خيالي؟ تصميم بوستر؟</p></div></div>
+  <div class="step"><div class="num">2</div><div><h3>صف بتفصيل</h3><p>أضف الألوان، الخامات، التعابير، الخلفية، العناصر الإضافية.</p></div></div>
+  <div class="step"><div class="num">3</div><div><h3>حدد الأسلوب والإضاءة</h3><p>«شبيه بفيلم خيال علمي، إضاءة نيون» ...</p></div></div>
+  <div class="step"><div class="num">4</div><div><h3>راجع وعدّل</h3><p>اطلب تغييرات محددة بدل إعادة البدء من الصفر.</p></div></div>
+  <div class="step"><div class="num">5</div><div><h3>احفظ أفضل صياغاتك</h3><p>أنشئ مكتبة برومبتات خاصة بك للمستقبل.</p></div></div>
+</section>
+
+<section id="examples" class="reveal">
+  <h2>أمثلة <span>احترافية</span> جاهزة</h2>
+  <h3>تصوير منتج</h3>
+  <div class="prompt-ex">A minimalist product photo of a matte black coffee mug on a marble surface, soft studio lighting, shallow depth of field, 8k, photorealistic<button class="copy">نسخ</button></div>
+  <h3>فن خيالي</h3>
+  <div class="prompt-ex">An epic digital painting of a floating crystal city in the sky, golden hour lighting, clouds passing through, cinematic composition, ultra detailed<button class="copy">نسخ</button></div>
+  <h3>تصميم شعار</h3>
+  <div class="prompt-ex">A modern minimalist logo for a tech brand named "Ali Moojid", geometric fox icon, gradient purple to cyan, flat design, white background, no text distortion<button class="copy">نسخ</button></div>
+  <h3>بورتريه سينمائي</h3>
+  <div class="prompt-ex">Cinematic portrait of a woman in a red coat standing in the rain at night, neon city lights in the background, dramatic lighting, film grain, shot on 35mm<button class="copy">نسخ</button></div>
+</section>
+
+<section class="reveal">
+  <h2>أخطاء <span>شائعة</span> يجب تجنبها</h2>
+  <div class="grid">
+    <div class="card"><h3>❌ الغموض</h3><p>«ارسم لي شيئاً جميلاً» يعطي نتائج عشوائية.</p></div>
+    <div class="card"><h3>❌ الحشو</h3><p>كلمات متناقضة أو زائدة تربك النموذج.</p></div>
+    <div class="card"><h3>❌ نسيان النصوص</h3><p>للنصوص داخل الصورة استخدم علامات اقتباس وحدد الخط.</p></div>
+    <div class="card"><h3>❌ عدم التكرار</h3><p>أول محاولة نادراً ما تكون مثالية — كرّر وحسّن.</p></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2>نصائح <span>المحترفين</span></h2>
+  <ul class="tips">
+    <li>استخدم أسماء فنانين أو أنماط معروفة: «بأسلوب Studio Ghibli»، «واقعية تصوير National Geographic».</li>
+    <li>اطلب أكثر من نسخة واختر الأفضل.</li>
+    <li>لإصلاح منطقة محددة استخدم ميزة التحرير (Inpainting) داخل الصورة.</li>
+    <li>ادمج التوليد مع Photoshop أو أدوات التحرير النهائية للنتائج التجارية.</li>
+    <li>وثّق صياغاتك الناجحة مع كل صورة تحتفظ بها.</li>
+  </ul>
+</section>
+
+<section id="faq" class="reveal">
+  <h2>أسئلة <span>شائعة</span></h2>
+  <div class="faq-item"><h3>هل البرومبت يجب أن يكون بالإنجليزية؟</h3><p>كلاهما يعمل، لكن الإنجليزية غالباً تعطي تحكماً أدق ونتائج أكثر استقراراً مع معظم النماذج.</p></div>
+  <div class="faq-item"><h3>كم كلمة للبرومبت المثالي؟</h3><p>عادة من 20 إلى 60 كلمة: كافٍ للتفصيل، غير مبالغ فيه.</p></div>
+  <div class="faq-item"><h3>هل يمكنني توليد نصوص داخل الصورة؟</h3><p>نعم، ضع النص بين علامتي اقتباس وحدد مكانه، وتجنب النصوص الطويلة جداً.</p></div>
+  <div class="faq-item"><h3>كيف أصلح وجهاً أو يداً مشوّهة؟</h3><p>اطلب من ChatGPT تعديل الجزء المحدد بالوصف، أو استخدم أدوات Regeneration و Inpainting.</p></div>
+</section>
+</div>
+
+<footer>
+  <div class="logo" style="font-size:1.8rem">Ali Moojid</div>
+  <p>A cinematic WebGL journey into AI infrastructure — Engineered by Ali Moojid © 2026</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
